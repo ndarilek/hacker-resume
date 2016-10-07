@@ -1,0 +1,3 @@
+[submodule "pandoc_resume"]
+	path = pandoc_resume
+	url = https://github.com/mszep/pandoc_resume

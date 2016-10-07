@@ -1,0 +1,7 @@
+#!/bin/sh
+
+cd /tmp
+git clone /var/git resume
+cd resume
+make
+cp *.pdf *.html *.docx *.rtf /var/www
