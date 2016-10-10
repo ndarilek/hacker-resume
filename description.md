@@ -1,0 +1,1 @@
+Easily create HTML, PDF, RTF and DocX resumes in Markdown. Resume sources are stored in a Git repository and updated automatically on push. The output is hosted on either a random Sandstorm subdomain, or on a custom domain as configured.
