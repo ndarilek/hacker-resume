@@ -6,7 +6,6 @@
     "start": "node ./bin/www"
   },
   "dependencies": {
-    "body-parser": "~1.15.1",
     "debug": "~2.2.0",
     "express": "~4.13.4",
     "git-http-backend": "^1.0.1",

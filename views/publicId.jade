@@ -5,18 +5,19 @@ block content
     | This resume is available at 
     a(href = url target = "_blank")= url
     | .
-  p Alternatively, you can publish it at your own custom domain by creating the following DNS records:
-  table
-    thead
-      th Name
-      th Type
-      th Value
-    tbody
-      tr
-        td resume.example.com
-        td CNAME
-        td= domain
-      tr
-        td sandstorm-www.resume.example.com
-        td TXT
-        td= publicId
+  - if(!isDemo)
+    p Alternatively, you can publish it at your own custom domain by creating the following DNS records:
+    table
+      thead
+        th Name
+        th Type
+        th Value
+      tbody
+        tr
+          td resume.example.com
+          td CNAME
+          td= domain
+        tr
+          td sandstorm-www.resume.example.com
+          td TXT
+          td= publicId
