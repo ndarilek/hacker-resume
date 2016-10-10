@@ -26,9 +26,15 @@ router.get("/publicId", (req, res) => {
   })
 })
 
-router.get("/git", (req, res) => {
+router.use("/git", (req, res) => {
   const b = gitBackend(req.url)
-  req.pipe(b).pipe(res)
+  req.pipe(b)((err, service) => {
+    if(err)
+      return res.end(err+"\n")
+    res.setHeader("content-type", service.type)
+    const ps = spawn(service.cmd, "/var/git")
+    ps.stdout.pipe(service.createStream()).pipe(ps.stdin)
+  }).pipe(res)
 })
 
 module.exports = router;
