@@ -14,4 +14,4 @@ fi
 cd /opt/app
 cp index.html /var/www
 cp make-resume /var/git/hooks/post-receive
-NODE_ENV=production HOME=/tmp PORT=8000 npm start
+NODE_ENV=production HOME=/tmp npm start

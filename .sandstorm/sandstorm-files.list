@@ -93,7 +93,6 @@ opt/app/.git/refs/heads/master
 opt/app/.sandstorm/launcher.sh
 opt/app/README.md
 opt/app/app.js
-opt/app/bin/www
 opt/app/index.html
 opt/app/make-resume
 opt/app/node_modules/accepts/index.js
