@@ -1,7 +1,8 @@
 var exec = require("child_process").exec,
   express = require('express'),
   router = express.Router(),
-  gitBackend = require("git-http-backend")
+  gitBackend = require("git-http-backend"),
+  spawn = require("child_process").spawn
 
 router.get('/', (req, res) => res.render("index"));
 
@@ -21,14 +22,14 @@ router.get("/publicId", (req, res) => {
 })
 
 router.use("/git", (req, res) => {
-  const b = gitBackend(req.url)
-  req.pipe(b)((err, service) => {
+  req.pipe(gitBackend(req.url, (err, service) => {
     if(err)
       return res.end(err+"\n")
     res.setHeader("content-type", service.type)
-    const ps = spawn(service.cmd, "/var/git")
+    console.log("cmd", service.cmd)
+    const ps = spawn(service.cmd, service.args.concat("/var/git"))
     ps.stdout.pipe(service.createStream()).pipe(ps.stdin)
-  }).pipe(res)
+  })).pipe(res)
 })
 
 module.exports = router

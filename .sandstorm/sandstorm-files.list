@@ -431,6 +431,8 @@ sandstorm-manifest
 usr/bin/context
 usr/bin/env
 usr/bin/git
+usr/bin/git-receive-pack
+usr/bin/git-upload-pack
 usr/bin/luatex
 usr/bin/make
 usr/bin/mtxrun
@@ -439,6 +441,7 @@ usr/bin/nodejs
 usr/bin/npm
 usr/bin/pandoc
 usr/bin/texlua
+usr/lib/git-core/git
 usr/lib/git-core/git-upload-pack
 usr/lib/libkpathsea.so.6
 usr/lib/libkpathsea.so.6.2.1

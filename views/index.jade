@@ -3,20 +3,26 @@ extends layout
 block content
   h1 Hacker Resume
   iframe(src = "/publicId" style = "width: 100%; margin: 0; border: 0;")
-  p To check out the Git repository containing your resume, run the following:
-  iframe#git(style = "width: 100%; height: 55px; margin: 0; border: 0;")
+  p To check out the Git repository containing your resume, first add an authorization key to Git:
+  iframe#gitAuthorize(style = "width: 100%; height: 55px; margin: 0; border: 0;")
+  p Then run the following:
+  iframe#gitClone(style = "width: 100%; height: 55px; margin: 0; border: 0;")
   script.
     document.addEventListener("DOMContentLoaded", function() {
       window.parent.postMessage({renderTemplate: {
-        rpcId: "0",
-        template: "git clone -c credential.helper=store " + window.location.protocol + "//" + "git@$API_HOST/git resume"
+        rpcId: "gitAuthorize",
+        template: "echo url=" + window.location.protocol + "//git:$API_TOKEN@$API_HOST | git -c credential.helper=store credential approve"
+      }}, "*")
+      window.parent.postMessage({renderTemplate: {
+        rpcId: "gitClone",
+        template: "git clone -c credential.helper=store " + window.location.protocol + "//git@$API_HOST/git resume"
       }}, "*")
     })
     window.addEventListener("message", function(event) {
       if(event.data.error)
         console.log(error)
-      else if(event.data.rpcId == "0") {
-        var el = document.getElementById("git")
+      else {
+        var el = document.getElementById(event.data.rpcId)
         el.setAttribute("src", event.data.uri)
       }
     })
