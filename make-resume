@@ -1,7 +1,12 @@
 #!/bin/sh
 
 cd /tmp
-git clone /var/git resume
-cd resume
+if [ -e resume ]; then
+  cd resume
+  git pull
+else
+  git clone /var/git resume
+  cd resume
+fi
 make
 cp *.pdf *.html *.docx *.rtf /var/www
