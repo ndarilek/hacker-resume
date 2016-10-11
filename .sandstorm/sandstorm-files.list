@@ -6,6 +6,8 @@ bin/bash
 bin/cp
 bin/dash
 bin/mkdir
+bin/mv
+bin/rm
 bin/sh
 bin/uname
 etc/alternatives/node

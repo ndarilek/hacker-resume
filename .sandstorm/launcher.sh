@@ -2,8 +2,9 @@
 set -euo pipefail
 
 if [ ! -e /var/git ]; then
-  cd /var
-  git clone --bare /opt/app/pandoc_resume git
+  git clone /opt/app/pandoc_resume /var/git
+  cd /var/git
+  git config receive.denyCurrentBranch ignore
 fi
 
 if [ ! -e /var/www ]; then
@@ -13,5 +14,5 @@ fi
 
 cd /opt/app
 cp index.html /var/www
-cp make-resume /var/git/hooks/post-receive
+cp make-resume /var/git/.git/hooks/post-receive
 NODE_ENV=production HOME=/tmp npm start

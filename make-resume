@@ -1,12 +1,7 @@
 #!/bin/sh
 
-cd /tmp
-if [ -e resume ]; then
-  cd resume
-  git pull
-else
-  git clone /var/git resume
-  cd resume
-fi
+cd /var/git
+env -i git reset --hard
 make
 cp *.pdf *.html *.docx *.rtf /var/www
+make clean
