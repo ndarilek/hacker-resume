@@ -5,3 +5,4 @@ env -i git reset --hard
 make
 cp *.pdf *.html *.docx *.rtf /var/www
 make clean
+cp /opt/app/index.html /var/www
